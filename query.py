@@ -42,6 +42,8 @@ def get_model_info(year):
     '''Takes in a year, and prints out each model, brand_name, and brand
     headquarters for that year using only ONE database query.'''
 
+    
+
     pass
 
 def get_brands_summary():

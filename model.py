@@ -16,14 +16,55 @@ class Model(db.Model):
     """Car model."""
 
     __tablename__ = "models"
-    pass
+
+    model_id = db.Column(db.Integer,
+                         autoincrement=True,
+                         primary_key=True)
+    year = db.Column(db.Integer,
+                     nullable=False)
+    brand_name = db.Column(db.String(50),
+                           db.ForeignKey('brands.name'),
+                           nullable=False)
+    name = db.Column(db.String(50),
+                     nullable=False)
+
+    # Establish a relationship between models and brands
+    # Based on foreign key above
+    brand = db.relationship('Brand', backref='models')
+
+    def __repr__(self):
+        """Show info about the Model object."""
+        return "<Model model_id={} year={} brand_name={} name={}>".format(self.model_id,
+                                                                          self.year,
+                                                                          self.brand_name,
+                                                                          self.name)
+
 
 
 class Brand(db.Model):
     """Car brand."""
 
     __tablename__ = "brands"
-    pass
+
+    brand_id = db.Column(db.Integer,
+                         autoincrement=True,
+                         primary_key=True)
+    # Added unique constraint because this field is used as a Foreign Key
+    name = db.Column(db.String(50),
+                     nullable=False,
+                     unique=True)
+    founded = db.Column(db.Integer)
+    headquarters = db.Column(db.String(50))
+    discontinued = db.Column(db.Integer)
+
+    def __repr__(self):
+        """Show info about he Brand object"""
+        return ("<Brand brand_id={} name={} founded={} " +
+                "headquarters={} discontinued={}").format(self.brand_id,
+                                                          self.name,
+                                                          self.founded,
+                                                          self.headquarters,
+                                                          self.discontinued)
 
 
 # End Part 1
