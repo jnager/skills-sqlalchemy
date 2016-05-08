@@ -60,11 +60,11 @@ class Brand(db.Model):
     def __repr__(self):
         """Show info about he Brand object"""
         return ("<Brand brand_id={} name={} founded={} " +
-                "headquarters={} discontinued={}").format(self.brand_id,
-                                                          self.name,
-                                                          self.founded,
-                                                          self.headquarters,
-                                                          self.discontinued)
+                "headquarters={} discontinued={}>").format(self.brand_id,
+                                                           self.name,
+                                                           self.founded,
+                                                           self.headquarters,
+                                                           self.discontinued)
 
 
 # End Part 1
